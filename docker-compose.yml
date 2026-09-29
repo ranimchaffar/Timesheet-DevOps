@@ -19,7 +19,7 @@ services:
       retries: 10
 
   backend:
-    build: .
+    image: chaffarranim/timesheet-devops:latest
     container_name: timesheet-backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/timesheet-devops-db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
@@ -33,7 +33,6 @@ services:
         condition: service_healthy
     networks:
       - app-network
-
 volumes:
   mysql-data:
 
