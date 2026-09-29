@@ -11,5 +11,16 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('Build & Run avec Docker Compose') {
+            steps {
+                sh 'docker compose down || true'
+                sh 'docker compose up -d --build'
+            }
+        }
+        stage('Vérifier les conteneurs') {
+            steps {
+                sh 'docker compose ps'
+            }
+        }
     }
 }
